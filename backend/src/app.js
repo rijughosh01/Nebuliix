@@ -1,10 +1,13 @@
 import express from "express";
 import { createServer } from "node:http";
-import mongoose from "mongoose";
-import cors from "cors";
 
-import userRoutes from "./routes/users.routes.js";
+import { Server } from "socket.io";
+
+import mongoose from "mongoose";
 import { connectToSocket } from "./controllers/socketManager.js";
+
+import cors from "cors";
+import userRoutes from "./routes/users.routes.js";
 
 const app = express();
 const server = createServer(app);
@@ -18,18 +21,14 @@ app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
-  try {
-    const connectionDb = await mongoose.connect(
-      "mongodb+srv://pg4009355:TM55VDc9C2kJtZJ8@zerodhaclonecluster.bycub.mongodb.net/?retryWrites=true&w=majority&appName=ZerodhaCloneCluster"
-    );
-    console.log(`MONGO Connected DB Host: ${connectionDb.connection.host}`);
-
-    server.listen(app.get("port"), () => {
-      console.log(`Server is running on port ${app.get("port")}`);
-    });
-  } catch (error) {
-    console.error("Error connecting to MongoDB", error);
-  }
+  app.set("mongo_user");
+  const connectionDb = await mongoose.connect(
+    "mongodb+srv://pg4009355:TM55VDc9C2kJtZJ8@zerodhaclonecluster.bycub.mongodb.net/?retryWrites=true&w=majority&appName=ZerodhaCloneCluster"
+  );
+  console.log(`MONGO Connected DB HOst: ${connectionDb.connection.host}`);
+  server.listen(app.get("port"), () => {
+    console.log("Server is running on port 8000");
+  });
 };
 
 start();
