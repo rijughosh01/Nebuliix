@@ -2,12 +2,12 @@ import axios from "axios";
 import httpStatus from "http-status";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import server from "../environment";
+// import server from "../environment";
 
 export const AuthContext = createContext({});
 
 const client = axios.create({
-  baseURL: `${server}/api/v1/users`,
+  baseURL:"http://localhost:8000/api/v1/users",
 });
 
 export const AuthProvider = ({ children }) => {
@@ -29,11 +29,6 @@ export const AuthProvider = ({ children }) => {
         return request.data.message;
       }
     } catch (err) {
-      console.error("Error:", err);
-      if (err.response) {
-        console.error("Error Response Status:", err.response.status);
-        console.error("Error Response Data:", err.response.data);
-      }
       throw err;
     }
   };
@@ -53,11 +48,6 @@ export const AuthProvider = ({ children }) => {
         router("/home");
       }
     } catch (err) {
-      console.error("Error:", err);
-      if (err.response) {
-        console.error("Error Response Status:", err.response.status);
-        console.error("Error Response Data:", err.response.data);
-      }
       throw err;
     }
   };
@@ -71,11 +61,6 @@ export const AuthProvider = ({ children }) => {
       });
       return request.data;
     } catch (err) {
-      console.error("Error:", err);
-      if (err.response) {
-        console.error("Error Response Status:", err.response.status);
-        console.error("Error Response Data:", err.response.data);
-      }
       throw err;
     }
   };
@@ -87,13 +72,8 @@ export const AuthProvider = ({ children }) => {
         meeting_code: meetingCode,
       });
       return request;
-    } catch (err) {
-      console.error("Error:", err);
-      if (err.response) {
-        console.error("Error Response Status:", err.response.status);
-        console.error("Error Response Data:", err.response.data);
-      }
-      throw err;
+    } catch (e) {
+      throw e;
     }
   };
 
