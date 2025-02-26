@@ -1,5 +1,6 @@
 let IS_PROD = false;
 const server = IS_PROD
-  ? "http://localhost:8000"
- : "https://nebuliix-backend.vercel.app";
+  ? "https://nebuliix-backend.vercel.app"
+  : "http://localhost:8000";
+
 export default server;
