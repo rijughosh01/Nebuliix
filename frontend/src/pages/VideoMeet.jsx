@@ -13,7 +13,7 @@ import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
 // import server from "../environment";
 
-const server_url = "https://nebuliix-backend.vercel.app/";
+const server_url = "http://localhost:8000";
 
 var connections = {};
 
