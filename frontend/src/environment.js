@@ -1,6 +1,6 @@
-let IS_PROD = true;
+let IS_PROD = false;
 const server = IS_PROD
-  ? "https://videobackend-zeta.vercel.app/"
-  : "http://localhost:8000/";
+  ? "https://nebuliix-backend.vercel.app"
+  : "http://localhost:8000";
 
 export default server;
