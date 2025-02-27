@@ -3,14 +3,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
-// import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-// import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AuthContext } from "../contexts/AuthContext";
 import { Snackbar } from "@mui/material";
@@ -20,11 +16,11 @@ import { Snackbar } from "@mui/material";
 const defaultTheme = createTheme();
 
 export default function Authentication() {
-  const [username, setUsername] = React.useState();
-  const [password, setPassword] = React.useState();
-  const [name, setName] = React.useState();
-  const [error, setError] = React.useState();
-  const [message, setMessage] = React.useState();
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [error, setError] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
   const [formState, setFormState] = React.useState(0);
 
@@ -49,7 +45,9 @@ export default function Authentication() {
       }
     } catch (err) {
       console.log(err);
-      let message = err.response.data.message;
+      let message = err.response
+        ? err.response.data.message
+        : "An error occurred";
       setError(message);
     }
   };
@@ -64,8 +62,7 @@ export default function Authentication() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://picsum.photos/1920/1080?random=1)",
+            backgroundImage: "url(https://picsum.photos/1920/1080?random=1)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -114,9 +111,9 @@ export default function Authentication() {
                   margin="normal"
                   required
                   fullWidth
-                  id="username"
+                  id="name"
                   label="Full Name"
-                  name="username"
+                  name="name"
                   value={name}
                   autoFocus
                   onChange={(e) => setName(e.target.value)}
