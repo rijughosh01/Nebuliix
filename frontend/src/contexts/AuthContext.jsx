@@ -12,9 +12,7 @@ const client = axios.create({
 
 export const AuthProvider = ({ children }) => {
   const authContext = useContext(AuthContext);
-
   const [userData, setUserData] = useState(authContext);
-
   const router = useNavigate();
 
   const handleRegister = async (name, username, password) => {
