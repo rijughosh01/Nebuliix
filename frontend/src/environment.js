@@ -1,6 +1,6 @@
 let IS_PROD = true;
 const server = IS_PROD
-  ? "https://nebuliix-back.onrender.com/"
-  : "http://localhost:8000";
+  ? "https://nebuliix-back.onrender.com/api/v1/users"
+  : "http://localhost:8000/api/v1/users";
 
 export default server;
