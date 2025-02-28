@@ -49,20 +49,19 @@
     gap: 15px;
     justify-content: center;
     padding: 20px;
+    margin-bottom: 20vh;
 }
 
 .conferenceView video {
-    width: 45vw;
-    height: 25vh;
+    width: 20vw;
+    height: 50vh;
     min-width: 30vw;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .conferenceView video:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Chat room styling */
