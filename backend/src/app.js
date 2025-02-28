@@ -16,7 +16,7 @@ const io = connectToSocket(server);
 app.set("port", process.env.PORT || 8000);
 app.use(
   cors({
-    origin: "https://nebuliix.onrender.com", // Replace with your frontend URL
+    origin: "https://nebuliix.onrender.com",
   })
 );
 app.use(express.json({ limit: "40kb" }));
