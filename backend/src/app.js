@@ -27,7 +27,12 @@ app.use("/api/v1/users", userRoutes);
 const start = async () => {
   app.set("mongo_user");
   const connectionDb = await mongoose.connect(
-    "mongodb+srv://pg4009355:TM55VDc9C2kJtZJ8@zerodhaclonecluster.bycub.mongodb.net/?retryWrites=true&w=majority&appName=ZerodhaCloneCluster"
+    "mongodb+srv://pg4009355:TM55VDc9C2kJtZJ8@zerodhaclonecluster.bycub.mongodb.net/?retryWrites=true&w=majority&appName=ZerodhaCloneCluster",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      maxPoolSize: 10,
+    }
   );
   console.log(`MONGO Connected DB HOst: ${connectionDb.connection.host}`);
   server.listen(app.get("port"), () => {

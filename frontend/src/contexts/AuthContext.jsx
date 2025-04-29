@@ -8,6 +8,7 @@ export const AuthContext = createContext({});
 
 const client = axios.create({
   baseURL: `${server}/api/v1/users`,
+  timeout: 5000,
 });
 
 export const AuthProvider = ({ children }) => {
@@ -18,34 +19,30 @@ export const AuthProvider = ({ children }) => {
   const handleRegister = async (name, username, password) => {
     try {
       let request = await client.post("/register", {
-        name: name,
-        username: username,
-        password: password,
+        name,
+        username,
+        password,
       });
 
       if (request.status === httpStatus.CREATED) {
         return request.data.message;
       }
     } catch (err) {
+      console.error("Register Error:", err.response?.data || err.message);
       throw err;
     }
   };
 
   const handleLogin = async (username, password) => {
     try {
-      let request = await client.post("/login", {
-        username: username,
-        password: password,
-      });
-
-      console.log(username, password);
-      console.log(request.data);
+      let request = await client.post("/login", { username, password });
 
       if (request.status === httpStatus.OK) {
         localStorage.setItem("token", request.data.token);
         router("/home");
       }
     } catch (err) {
+      console.error("Login Error:", err.response?.data || err.message);
       throw err;
     }
   };

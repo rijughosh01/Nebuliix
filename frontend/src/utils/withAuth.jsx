@@ -1,27 +1,29 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const withAuth = (WrappedComponent ) => {
-    const AuthComponent = (props) => {
-        const router = useNavigate();
+const withAuth = (WrappedComponent) => {
+  const AuthComponent = (props) => {
+    const router = useNavigate();
+    const [loading, setLoading] = useState(true);
 
-        const isAuthenticated = () => {
-            if(localStorage.getItem("token")) {
-                return true;
-            } 
-            return false;
-        }
+    const isAuthenticated = () => {
+      return !!localStorage.getItem("token");
+    };
 
-        useEffect(() => {
-            if(!isAuthenticated()) {
-                router("/auth")
-            }
-        }, [])
+    useEffect(() => {
+      if (!isAuthenticated()) {
+        router("/auth");
+      } else {
+        setLoading(false);
+      }
+    }, []);
 
-        return <WrappedComponent {...props} />
-    }
+    if (loading) return <div>Loading...</div>; // Show loading state
 
-    return AuthComponent;
-}
+    return <WrappedComponent {...props} />;
+  };
+
+  return AuthComponent;
+};
 
 export default withAuth;
