@@ -119,3 +119,59 @@
 .chattingArea button:hover {
     background: #0056b3;
 }
+
+@media (max-width: 768px) {
+  .meetVideoContainer {
+    height: auto;
+    min-height: 100vh;
+    padding: 10px 0;
+  }
+
+  .meetUserVideo {
+    position: static;
+    height: 18vh;
+    width: 90vw;
+    min-width: unset;
+    left: unset;
+    bottom: unset;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .conferenceView {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+    margin-bottom: 10vh;
+  }
+
+  .conferenceView video {
+    width: 90vw;
+    min-width: unset;
+    height: 25vh;
+    border-radius: 16px;
+  }
+
+  .chatRoom {
+    position: static;
+    width: 95vw;
+    height: 40vh;
+    top: unset;
+    right: unset;
+    margin: 10px auto;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .buttonContainers {
+    position: static;
+    width: 100vw;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 10px 0;
+  }
+
+  .buttonContainers svg {
+    font-size: 2rem;
+  }
+}

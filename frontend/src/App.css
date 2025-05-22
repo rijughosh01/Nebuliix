@@ -88,3 +88,58 @@
   height: auto;
   border-radius: 20px;
 }
+
+@media (max-width: 768px) {
+  .landingPageContainer {
+    padding: 0 10px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .landingPageContainer nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 0.5rem;
+    padding-block: 1rem;
+  }
+
+  .landingMainContainer {
+    flex-direction: column;
+    padding-inline: 0.5rem;
+    height: auto;
+    gap: 2rem;
+  }
+
+  .landingMainContainer > div:nth-child(1) {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .landingMainContainer > div:nth-child(2) img {
+    height: 30vh;
+    width: 90vw;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .meetContainer {
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+    padding-inline: 0.5rem;
+  }
+
+  .rightPanel > img {
+    width: 90vw;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .navBar {
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 0.5rem;
+  }
+}
