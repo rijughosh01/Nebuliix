@@ -8,7 +8,7 @@ export const AuthContext = createContext({});
 
 const client = axios.create({
   baseURL: `${server}/api/v1/users`,
-  timeout: 5000,
+  timeout: 30000,
 });
 
 export const AuthProvider = ({ children }) => {
