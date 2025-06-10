@@ -23,13 +23,13 @@ export default function Authentication() {
   const [formState, setFormState] = React.useState(0);
 
   const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(false); 
+  const [loading, setLoading] = React.useState(false);
 
   const { handleRegister, handleLogin } = React.useContext(AuthContext);
 
   let handleAuth = async () => {
     setLoading(true);
-    setError(""); 
+    setError("");
     try {
       if (formState === 0) {
         let result = await handleLogin(username, password);
@@ -47,9 +47,13 @@ export default function Authentication() {
     } catch (err) {
       console.log(err);
       let message = err?.response?.data?.message || "Something went wrong";
-      setError(message);
+      if (message.includes("User already exists")) {
+        setError("Username already taken. Please choose another username.");
+      } else {
+        setError(message);
+      }
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -63,8 +67,7 @@ export default function Authentication() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://picsum.photos/1920/1080?random=1)",
+            backgroundImage: "url(https://picsum.photos/1920/1080?random=1)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -94,7 +97,7 @@ export default function Authentication() {
                 onClick={() => {
                   setFormState(0);
                 }}
-                disabled={loading} 
+                disabled={loading}
               >
                 Sign In
               </Button>
@@ -103,7 +106,7 @@ export default function Authentication() {
                 onClick={() => {
                   setFormState(1);
                 }}
-                disabled={loading} 
+                disabled={loading}
               >
                 Sign Up
               </Button>
@@ -121,7 +124,7 @@ export default function Authentication() {
                   value={name}
                   autoFocus
                   onChange={(e) => setName(e.target.value)}
-                  disabled={loading} 
+                  disabled={loading}
                 />
               ) : (
                 <></>
@@ -137,7 +140,7 @@ export default function Authentication() {
                 value={username}
                 autoFocus
                 onChange={(e) => setUsername(e.target.value)}
-                disabled={loading} 
+                disabled={loading}
               />
               <TextField
                 margin="normal"
