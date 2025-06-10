@@ -46,9 +46,9 @@ export default function Authentication() {
       }
     } catch (err) {
       console.log(err);
-      let message = err?.response?.data?.message || "Something went wrong";
+      let message = err?.response?.data?.message || "Username already taken. Please choose another username.";
       if (message.includes("User already exists")) {
-        setError("Username already taken. Please choose another username.");
+        setError("Someone already registered with this username. Please try another username.");
       } else {
         setError(message);
       }
